@@ -9,15 +9,9 @@ import { createCabin } from "../../services/apiCabins";
 import toast from "react-hot-toast";
 import FormRow from "../../ui/FormRow";
 
-function CreateCabinForm({ cabinToEdit }) {
-  const { id: editId, ...editValues } = cabinToEdit;
-
-  const isEditting = !!editId;
-
+function CreateCabinForm({}) {
   const queryClient = useQueryClient();
-  const { register, handleSubmit, reset, getValues, formState } = useForm({
-    defaultValues: isEditting && editValues,
-  });
+  const { register, handleSubmit, reset, getValues, formState } = useForm();
 
   const { errors } = formState;
 
@@ -130,7 +124,7 @@ function CreateCabinForm({ cabinToEdit }) {
           disabled={isCreating}
           accept="image/*"
           {...register("image", {
-            required: isEditting ? false : "This field is required",
+            required: "This field is required",
           })}
         />
       </FormRow>
@@ -140,9 +134,7 @@ function CreateCabinForm({ cabinToEdit }) {
         <Button variation="secondary" type="reset">
           Cancel
         </Button>
-        <Button disabled={isCreating}>
-          {isEditting ? "Edit cabin" : "Create new cabin"}
-        </Button>
+        <Button disabled={isCreating}>Add cabin</Button>
       </FormRow>
     </Form>
   );
