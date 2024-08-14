@@ -4,6 +4,7 @@ import { useCabins } from "./useCabins";
 import Table from "../../ui/Table";
 import Menus from "../../ui/Menus";
 import { useSearchParams } from "react-router-dom";
+import Empty from "../../ui/Empty";
 
 function CabinTable() {
   const { isLoading, cabins, error } = useCabins();
@@ -21,7 +22,6 @@ function CabinTable() {
   if (param === "with-discount")
     filteredCabins = cabins?.filter((cabin) => cabin.discount > 0);
 
-  console.log(filteredCabins);
   //2. Sort
 
   const sortBy = searchParams.get("sortBy") || "startDate-asc";
@@ -34,6 +34,8 @@ function CabinTable() {
   );
 
   if (isLoading) return <Spinner />;
+
+  if (!cabins.length) return <Empty resourceName="cabins" />;
 
   return (
     <Menus>
