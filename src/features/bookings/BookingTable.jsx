@@ -4,14 +4,9 @@ import Menus from "../../ui/Menus";
 import Empty from "../../ui/Empty";
 import useBookings from "./useBookings";
 import Spinner from "../../ui/Spinner";
-import { useSearchParams } from "react-router-dom";
 
 function BookingTable() {
-  // const bookings = [];
   const { bookings, isLoading } = useBookings();
-  const [searchParams] = useSearchParams();
-
-  const filterValue = searchParams.get("status");
 
   if (isLoading) return <Spinner />;
 
