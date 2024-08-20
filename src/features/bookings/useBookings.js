@@ -20,16 +20,19 @@ function useBookings() {
 
   const sortBy = { field, direction };
 
+  // PAGINATION
+  const page = !searchParams ? 1 : Number(searchParams.get("page"));
+
   const {
-    data: bookings,
     isLoading,
+    data: { data: bookings, count } = {},
     error,
   } = useQuery({
-    queryKey: ["bookings", filter, sortBy], // -> this is like a dependency array.. the data will always refetch when filter changes
-    queryFn: () => getBookings({ filter, sortBy }),
+    queryKey: ["bookings", filter, sortBy, page], // -> this is like a dependency array.. the data will always refetch when filter changes
+    queryFn: () => getBookings({ filter, sortBy, page }),
   });
 
-  return { bookings, isLoading, error };
+  return { bookings, isLoading, error, count };
 }
 
 export default useBookings;
