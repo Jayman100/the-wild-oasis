@@ -23,7 +23,7 @@ function useBookings() {
   const sortBy = { field, direction };
 
   // PAGINATION
-  const page = !searchParams ? 1 : Number(searchParams.get("page"));
+  const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
 
   // QUERY
   const {
