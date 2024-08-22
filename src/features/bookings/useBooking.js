@@ -6,11 +6,11 @@ function useBooking() {
   const { bookingId } = useParams();
 
   const {
-    data: booking,
+    data: booking = {},
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["booking"],
+    queryKey: ["booking", bookingId],
     queryFn: () => getBooking(bookingId),
     retry: false, // By default react query will try to fetch data 3 times incase it fails, this retry will make it fetch data only once.
   });
