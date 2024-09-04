@@ -36,7 +36,7 @@ function CheckinBooking() {
 
   useEffect(() => {
     setConfirmPaid(booking.isPaid ?? false);
-  }, [booking.isPaid]);
+  }, [booking]);
 
   const {
     id: bookingId,
@@ -48,7 +48,7 @@ function CheckinBooking() {
   } = booking;
 
   const optionalBreakfastPrice =
-    settings.breakfastPrice * numNights * numGuests;
+    settings?.breakfastPrice * numNights * numGuests;
 
   function handleCheckin() {
     if (!confirmPaid) return;

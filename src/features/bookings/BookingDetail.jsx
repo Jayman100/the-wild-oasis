@@ -28,11 +28,7 @@ function BookingDetail() {
   const { checkout, isCheckingOut } = useCheckout();
   const { deleteBook, isDeletingBooking } = useDeleteBooking();
 
-  const {
-    status,
-    id,
-    cabins: { name: cabinName },
-  } = booking;
+  const { status, id, cabins: { name: cabinName } = {} } = booking;
 
   const moveBack = useMoveBack();
   const navigate = useNavigate();
