@@ -13,7 +13,7 @@ function useLogin() {
     onSuccess: (user) => {
       //sets the data in the cache of user query
       queryClient.setQueriesData(["user"], user);
-      navigate("/dashboard");
+      navigate("/dashboard", { replace: true });
     },
 
     onError: (error) => {
