@@ -14,6 +14,7 @@ export async function signup({ fullName, email, password }) {
 
   if (error) throw new Error(error.message);
 
+  // re_ghvtzM81_6AiPsc4V6Yqbfw232jv3fwCd;
   return data;
 }
 

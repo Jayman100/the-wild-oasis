@@ -5,10 +5,12 @@ import Input from "../../ui/Input";
 import FormRowVertical from "../../ui/FormRowVertical";
 import useLogin from "./useLogin";
 import SpinnerMini from "../../ui/SpinnerMini";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function LoginForm() {
   const [email, setEmail] = useState("jayman@example.com");
   const [password, setPassword] = useState("pass111");
+  const [showPassword, setShowPassword] = useState(false);
 
   const { login, isLoading } = useLogin();
 
@@ -43,13 +45,20 @@ function LoginForm() {
       </FormRowVertical>
       <FormRowVertical label="Password">
         <Input
-          type="password"
+          type={showPassword ? "text" : "password"}
           id="password"
           autoComplete="current-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           disabled={isLoading}
         />
+        <button
+          className="btn-eye"
+          type="button"
+          onClick={() => setShowPassword((p) => !p)}
+        >
+          {showPassword ? <FaEyeSlash /> : <FaEye />}
+        </button>
       </FormRowVertical>
       <FormRowVertical>
         <Button size="large" disabled={isLoading}>

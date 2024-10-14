@@ -6,6 +6,13 @@ const StyledFormRow = styled.div`
   gap: 0.8rem;
 
   padding: 1.2rem 0;
+
+  & .btn-eye {
+    background: none;
+    border: none;
+    align-self: flex-end;
+    transform: translate(-10px, -35px);
+  }
 `;
 
 const Label = styled.label`
@@ -20,7 +27,7 @@ const Error = styled.span`
 function FormRowVertical({ label, error, children }) {
   return (
     <StyledFormRow>
-      {label && <Label htmlFor={children.props.id}>{label}</Label>}
+      {label && <Label htmlFor={children?.props?.id}>{label}</Label>}
       {children}
       {error && <Error>{error}</Error>}
     </StyledFormRow>
