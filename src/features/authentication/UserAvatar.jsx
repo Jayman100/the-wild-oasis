@@ -28,10 +28,7 @@ function UserAvatar() {
 
   return (
     <StyledUserAvatar>
-      <Avatar
-        src={avatar || "default-user.jpg"}
-        alt={`Avatar of ${fullName}`}
-      />
+      <Avatar src={avatar || "default-user.jpg"} alt={`Avatar of ${"name"}`} />
       <span style={{ textTransform: "capitalize" }}>{fullName}</span>
     </StyledUserAvatar>
   );
