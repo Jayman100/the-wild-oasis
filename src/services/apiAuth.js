@@ -40,7 +40,7 @@ export async function getCurrentUser() {
 
   if (error) throw new Error(error.message);
 
-  return data?.user;
+  return data.user;
 }
 
 export async function logout() {
