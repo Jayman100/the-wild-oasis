@@ -21,7 +21,10 @@ function ProtectedRoute({ children }) {
   //Todo: 2. If there is no user, redirect to the login page
 
   useEffect(() => {
-    if (!isAuthenticated && !isLoading) navigate("/login");
+    if (!isAuthenticated && !isLoading) {
+      navigate("/login");
+      return;
+    }
   }, [isAuthenticated, navigate, isLoading]);
 
   //Todo: 3. While loading, show a spinner
