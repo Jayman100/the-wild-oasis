@@ -24,11 +24,14 @@ const Avatar = styled.img`
 function UserAvatar() {
   const { user } = useUser();
 
-  const { avatar, fullName } = user.user_metadata;
+  // const { avatar, fullName } = user.user_metadata;
+
+  const avatar = user?.user_metadata?.avatar || "default-user.jpg";
+  const fullName = user?.user_metadata?.fullName || "Anonymous";
 
   return (
     <StyledUserAvatar>
-      <Avatar src={avatar || "default-user.jpg"} alt={`Avatar of ${"name"}`} />
+      <Avatar src={avatar} alt={`Avatar of ${fullName}`} />
       <span style={{ textTransform: "capitalize" }}>{fullName}</span>
     </StyledUserAvatar>
   );
